@@ -6,3 +6,4 @@
 
 void finalize_mat(cv::Mat * frame);
 typedef Rcpp::XPtr<cv::Mat, Rcpp::PreserveStorage, finalize_mat, true> XPtrMat;
+typedef Rcpp::XPtr<cv::ORB> XPtrOrb;
