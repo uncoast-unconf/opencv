@@ -101,6 +101,26 @@ cvmat_hog <- function(ptr) {
     .Call('_opencv_cvmat_hog', PACKAGE = 'opencv', ptr)
 }
 
+timesTwo <- function(x) {
+    .Call('_opencv_timesTwo', PACKAGE = 'opencv', x)
+}
+
+cvmat_imthresh <- function(ptr) {
+    .Call('_opencv_cvmat_imthresh', PACKAGE = 'opencv', ptr)
+}
+
+cvmat_cvtColor <- function(ptr) {
+    .Call('_opencv_cvmat_cvtColor', PACKAGE = 'opencv', ptr)
+}
+
+cvmat_distanceTransform <- function(ptr) {
+    .Call('_opencv_cvmat_distanceTransform', PACKAGE = 'opencv', ptr)
+}
+
+timesXY <- function(x, y) {
+    .Call('_opencv_timesXY', PACKAGE = 'opencv', x, y)
+}
+
 cvmat_markers <- function(ptr) {
     .Call('_opencv_cvmat_markers', PACKAGE = 'opencv', ptr)
 }

@@ -285,6 +285,62 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// timesTwo
+NumericVector timesTwo(NumericVector x);
+RcppExport SEXP _opencv_timesTwo(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(timesTwo(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cvmat_imthresh
+XPtrMat cvmat_imthresh(XPtrMat ptr);
+RcppExport SEXP _opencv_cvmat_imthresh(SEXP ptrSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< XPtrMat >::type ptr(ptrSEXP);
+    rcpp_result_gen = Rcpp::wrap(cvmat_imthresh(ptr));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cvmat_cvtColor
+XPtrMat cvmat_cvtColor(XPtrMat ptr);
+RcppExport SEXP _opencv_cvmat_cvtColor(SEXP ptrSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< XPtrMat >::type ptr(ptrSEXP);
+    rcpp_result_gen = Rcpp::wrap(cvmat_cvtColor(ptr));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cvmat_distanceTransform
+XPtrMat cvmat_distanceTransform(XPtrMat ptr);
+RcppExport SEXP _opencv_cvmat_distanceTransform(SEXP ptrSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< XPtrMat >::type ptr(ptrSEXP);
+    rcpp_result_gen = Rcpp::wrap(cvmat_distanceTransform(ptr));
+    return rcpp_result_gen;
+END_RCPP
+}
+// timesXY
+NumericVector timesXY(NumericVector x, NumericVector y);
+RcppExport SEXP _opencv_timesXY(SEXP xSEXP, SEXP ySEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type y(ySEXP);
+    rcpp_result_gen = Rcpp::wrap(timesXY(x, y));
+    return rcpp_result_gen;
+END_RCPP
+}
 // cvmat_markers
 XPtrMat cvmat_markers(XPtrMat ptr);
 RcppExport SEXP _opencv_cvmat_markers(SEXP ptrSEXP) {
@@ -323,6 +379,11 @@ static const R_CallMethodDef CallEntries[] = {
     {"_opencv_cvmat_knn", (DL_FUNC) &_opencv_cvmat_knn, 1},
     {"_opencv_cvmat_edges", (DL_FUNC) &_opencv_cvmat_edges, 1},
     {"_opencv_cvmat_hog", (DL_FUNC) &_opencv_cvmat_hog, 1},
+    {"_opencv_timesTwo", (DL_FUNC) &_opencv_timesTwo, 1},
+    {"_opencv_cvmat_imthresh", (DL_FUNC) &_opencv_cvmat_imthresh, 1},
+    {"_opencv_cvmat_cvtColor", (DL_FUNC) &_opencv_cvmat_cvtColor, 1},
+    {"_opencv_cvmat_distanceTransform", (DL_FUNC) &_opencv_cvmat_distanceTransform, 1},
+    {"_opencv_timesXY", (DL_FUNC) &_opencv_timesXY, 2},
     {"_opencv_cvmat_markers", (DL_FUNC) &_opencv_cvmat_markers, 1},
     {NULL, NULL, 0}
 };

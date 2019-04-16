@@ -47,6 +47,27 @@ ocv_write <- function(image, path){
 
 #' @export
 #' @rdname opencv
+ocv_thresh <- function(image){
+  cvmat_imthresh(image)
+}
+
+#' @export
+#' @rdname opencv
+ocv_disttransform <- function(image){
+  cvmat_distanceTransform(image)
+}
+
+#' @export
+#' @rdname opencv
+ocv_gray2bw <- function(image){
+  cvmat_cvtColor(image)
+}
+
+
+
+
+#' @export
+#' @rdname opencv
 ocv_destroy <- function(image){
   cvmat_destroy(image)
 }
