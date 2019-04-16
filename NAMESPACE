@@ -2,6 +2,8 @@
 
 S3method(print,"opencv-image")
 export("%>%")
+export(dist_transform)
+export(ocv_binarize)
 export(ocv_bitmap)
 export(ocv_blur)
 export(ocv_copyto)
@@ -11,7 +13,11 @@ export(ocv_disttransform)
 export(ocv_edges)
 export(ocv_face)
 export(ocv_facemask)
+<<<<<<< HEAD
 export(ocv_gray2bw)
+=======
+export(ocv_grayscale)
+>>>>>>> bbf6b696ecae4a00011d8bad4af1e89990329a86
 export(ocv_hog)
 export(ocv_info)
 export(ocv_knn)
