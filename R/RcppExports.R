@@ -113,8 +113,8 @@ cvmat_hog <- function(ptr) {
     .Call('_opencv_cvmat_hog', PACKAGE = 'opencv', ptr)
 }
 
-cvmat_create <- function(nfeatures = 500L, scaleFactor = 1.2, nlevels = 8L, edgeThreshold = 31L, firstLevel = 0L, WTA_K = 2L) {
-    .Call('_opencv_cvmat_create', PACKAGE = 'opencv', nfeatures, scaleFactor, nlevels, edgeThreshold, firstLevel, WTA_K)
+cvmat_orbcreate <- function(nfeatures = 500L, scaleFactor = 1.2, nlevels = 8L, edgeThreshold = 31L, firstLevel = 0L, WTA_K = 2L) {
+    .Call('_opencv_cvmat_orbcreate', PACKAGE = 'opencv', nfeatures, scaleFactor, nlevels, edgeThreshold, firstLevel, WTA_K)
 }
 
 cvmat_markers <- function(ptr) {
