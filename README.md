@@ -3,20 +3,23 @@
 > Experimenting with computer vision and machine learning in R. This 
   package exposes some of the available 'OpenCV' <https://opencv.org/> algorithms,
   such as edge, body or face detection. These can either be applied to analyze 
-  static images, or to filter live video footage from a camera device.
-
-[![Build Status](https://travis-ci.org/ropensci/opencv.svg?branch=master)](https://travis-ci.org/ropensci/opencv)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ropensci/opencv?branch=master&svg=true)](https://ci.appveyor.com/project/jeroen/opencv)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/opencv)](http://cran.r-project.org/package=opencv)
-[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/opencv)](http://cran.r-project.org/web/packages/opencv/index.html)
+  static images, or to filter live video footage from a camera device. This is a 
+  modification of the existing `opencv` R package on CRAN.
 
 
 ## Installation
 
+This is a modification of the `opencv` R package on CRAN. 
 On Windows and MacOS, the package can be installed directoy from CRAN:
 
 ```r
 install.packages("opencv")
+```
+
+This version can be found on github using: 
+
+```r
+devtools::install_github('uncoast-unconf/opencv')
 ```
 
 ### Install from source
@@ -36,11 +39,31 @@ sudo apt-get install libopencv-dev
 And then install the R bindings:
 
 ```r
-devtools::install_github("ropensci/opencv")
+devtools::install_github("uncoast-unconf/opencv")
 library(opencv)
 ```
 
 ## Basic stuff:
+
+### Newly implemented:
+
+Distance transform for binary images:
+
+```r 
+newunconf <- ocv_read("")
+
+
+```
+
+ORB keypoints marking:
+
+Well, this is implemented, but we don't have anything, like, to display for it.
+
+But it can be used for image registration. The idea is: match up keypoints on the new 
+image to the reference image, then find a translation to map the new image to the 
+reference image. So, we made progress on this.
+
+### Old stuff:
 
 Face recognition:
 

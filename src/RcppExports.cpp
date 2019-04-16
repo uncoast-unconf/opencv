@@ -348,6 +348,19 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// alignImages
+XPtrMat alignImages(XPtrMat im1, XPtrMat im2, int features);
+RcppExport SEXP _opencv_alignImages(SEXP im1SEXP, SEXP im2SEXP, SEXP featuresSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< XPtrMat >::type im1(im1SEXP);
+    Rcpp::traits::input_parameter< XPtrMat >::type im2(im2SEXP);
+    Rcpp::traits::input_parameter< int >::type features(featuresSEXP);
+    rcpp_result_gen = Rcpp::wrap(alignImages(im1, im2, features));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_opencv_cvmat_destroy", (DL_FUNC) &_opencv_cvmat_destroy, 1},
@@ -380,6 +393,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_opencv_cvmat_hog", (DL_FUNC) &_opencv_cvmat_hog, 1},
     {"_opencv_cvmat_orbcreate", (DL_FUNC) &_opencv_cvmat_orbcreate, 6},
     {"_opencv_cvmat_markers", (DL_FUNC) &_opencv_cvmat_markers, 1},
+    {"_opencv_alignImages", (DL_FUNC) &_opencv_alignImages, 3},
     {NULL, NULL, 0}
 };
 

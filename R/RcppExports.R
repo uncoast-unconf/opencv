@@ -121,3 +121,7 @@ cvmat_markers <- function(ptr) {
     .Call('_opencv_cvmat_markers', PACKAGE = 'opencv', ptr)
 }
 
+alignImages <- function(im1, im2, features) {
+    .Call('_opencv_alignImages', PACKAGE = 'opencv', im1, im2, features)
+}
+
