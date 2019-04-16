@@ -77,6 +77,10 @@ cv_binary <- function(src) {
     .Call('_opencv_cv_binary', PACKAGE = 'opencv', src)
 }
 
+cvmat_distanceTransform <- function(ptr, distanceType, maskSize, labelType) {
+    .Call('_opencv_cvmat_distanceTransform', PACKAGE = 'opencv', ptr, distanceType, maskSize, labelType)
+}
+
 cvmat_blur <- function(ptr, ksize) {
     .Call('_opencv_cvmat_blur', PACKAGE = 'opencv', ptr, ksize)
 }
@@ -113,24 +117,12 @@ cvmat_hog <- function(ptr) {
     .Call('_opencv_cvmat_hog', PACKAGE = 'opencv', ptr)
 }
 
-timesTwo <- function(x) {
-    .Call('_opencv_timesTwo', PACKAGE = 'opencv', x)
-}
-
-cvmat_imthresh <- function(ptr) {
-    .Call('_opencv_cvmat_imthresh', PACKAGE = 'opencv', ptr)
-}
-
 cvmat_cvtColor <- function(ptr) {
     .Call('_opencv_cvmat_cvtColor', PACKAGE = 'opencv', ptr)
 }
 
-cvmat_distanceTransform <- function(ptr) {
-    .Call('_opencv_cvmat_distanceTransform', PACKAGE = 'opencv', ptr)
-}
-
-timesXY <- function(x, y) {
-    .Call('_opencv_timesXY', PACKAGE = 'opencv', x, y)
+cvmat_imthresh <- function(ptr, thresh, maxval, thresholdType) {
+    .Call('_opencv_cvmat_imthresh', PACKAGE = 'opencv', ptr, thresh, maxval, thresholdType)
 }
 
 cvmat_markers <- function(ptr) {

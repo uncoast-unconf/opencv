@@ -47,27 +47,6 @@ ocv_write <- function(image, path){
 
 #' @export
 #' @rdname opencv
-ocv_thresh <- function(image){
-  cvmat_imthresh(image)
-}
-
-#' @export
-#' @rdname opencv
-ocv_disttransform <- function(image){
-  cvmat_distanceTransform(image)
-}
-
-#' @export
-#' @rdname opencv
-ocv_gray2bw <- function(image){
-  cvmat_cvtColor(image)
-}
-
-
-
-
-#' @export
-#' @rdname opencv
 ocv_destroy <- function(image){
   cvmat_destroy(image)
 }
@@ -191,6 +170,25 @@ ocv_video <- function(filter){
     return(out)
   })
 }
+
+#' @export
+#' @rdname opencv
+ocv_imageThreshold <- function(image, thresh, maxval, thresholdType){
+  cvmat_imthresh(image, thresh, maxval, thresholdType)
+}
+
+#' @export
+#' @rdname opencv
+ocv_im2bw <- function(image){
+  cvmat_cvtColor(image)
+}
+
+#' @export
+#' @rdname opencv
+ocv_distTransform <- function(image, distanceType, maskSize, labelType){
+  cvmat_distanceTransform(image, distanceType, maskSize, labelType)
+}
+
 
 #' @importFrom magrittr %>%
 #' @export
