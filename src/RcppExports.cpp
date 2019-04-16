@@ -321,6 +321,22 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// cvmat_create
+XPtrOrb cvmat_create(int nfeatures, float scaleFactor, int nlevels, int edgeThreshold, int firstLevel, int WTA_K);
+RcppExport SEXP _opencv_cvmat_create(SEXP nfeaturesSEXP, SEXP scaleFactorSEXP, SEXP nlevelsSEXP, SEXP edgeThresholdSEXP, SEXP firstLevelSEXP, SEXP WTA_KSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type nfeatures(nfeaturesSEXP);
+    Rcpp::traits::input_parameter< float >::type scaleFactor(scaleFactorSEXP);
+    Rcpp::traits::input_parameter< int >::type nlevels(nlevelsSEXP);
+    Rcpp::traits::input_parameter< int >::type edgeThreshold(edgeThresholdSEXP);
+    Rcpp::traits::input_parameter< int >::type firstLevel(firstLevelSEXP);
+    Rcpp::traits::input_parameter< int >::type WTA_K(WTA_KSEXP);
+    rcpp_result_gen = Rcpp::wrap(cvmat_create(nfeatures, scaleFactor, nlevels, edgeThreshold, firstLevel, WTA_K));
+    return rcpp_result_gen;
+END_RCPP
+}
 // cvmat_markers
 XPtrMat cvmat_markers(XPtrMat ptr);
 RcppExport SEXP _opencv_cvmat_markers(SEXP ptrSEXP) {
@@ -362,6 +378,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_opencv_cvmat_knn", (DL_FUNC) &_opencv_cvmat_knn, 1},
     {"_opencv_cvmat_edges", (DL_FUNC) &_opencv_cvmat_edges, 1},
     {"_opencv_cvmat_hog", (DL_FUNC) &_opencv_cvmat_hog, 1},
+    {"_opencv_cvmat_create", (DL_FUNC) &_opencv_cvmat_create, 6},
     {"_opencv_cvmat_markers", (DL_FUNC) &_opencv_cvmat_markers, 1},
     {NULL, NULL, 0}
 };
