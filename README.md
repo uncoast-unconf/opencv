@@ -47,15 +47,9 @@ library(opencv)
 
 ### Newly implemented:
 
-Distance transform for binary images:
+Distance transform for binary images: see the vignette!
 
-```r 
-newunconf <- ocv_read("")
-
-
-```
-
-ORB keypoints marking:
+ORB keypoints marking: see the vignette!
 
 Well, this is implemented, but we don't have anything, like, to display for it.
 
