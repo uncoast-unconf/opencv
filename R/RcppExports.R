@@ -77,6 +77,10 @@ cv_binary <- function(src) {
     .Call('_opencv_cv_binary', PACKAGE = 'opencv', src)
 }
 
+cvmat_distanceTransform <- function(ptr, distanceType, maskSize, labelType) {
+    .Call('_opencv_cvmat_distanceTransform', PACKAGE = 'opencv', ptr, distanceType, maskSize, labelType)
+}
+
 cvmat_blur <- function(ptr, ksize) {
     .Call('_opencv_cvmat_blur', PACKAGE = 'opencv', ptr, ksize)
 }
@@ -111,6 +115,14 @@ cvmat_edges <- function(ptr) {
 
 cvmat_hog <- function(ptr) {
     .Call('_opencv_cvmat_hog', PACKAGE = 'opencv', ptr)
+}
+
+cvmat_cvtColor <- function(ptr) {
+    .Call('_opencv_cvmat_cvtColor', PACKAGE = 'opencv', ptr)
+}
+
+cvmat_imthresh <- function(ptr, thresh, maxval, thresholdType) {
+    .Call('_opencv_cvmat_imthresh', PACKAGE = 'opencv', ptr, thresh, maxval, thresholdType)
 }
 
 cvmat_orbcreate <- function(nfeatures = 500L, scaleFactor = 1.2, nlevels = 8L, edgeThreshold = 31L, firstLevel = 0L, WTA_K = 2L) {

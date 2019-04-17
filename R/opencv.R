@@ -171,6 +171,25 @@ ocv_video <- function(filter){
   })
 }
 
+#' @export
+#' @rdname opencv
+ocv_imageThreshold <- function(image, thresh, maxval, thresholdType){
+  cvmat_imthresh(image, thresh, maxval, thresholdType)
+}
+
+#' @export
+#' @rdname opencv
+ocv_im2bw <- function(image){
+  cvmat_cvtColor(image)
+}
+
+#' @export
+#' @rdname opencv
+ocv_distTransform <- function(image, distanceType, maskSize, labelType){
+  cvmat_distanceTransform(image, distanceType, maskSize, labelType)
+}
+
+
 #' @importFrom magrittr %>%
 #' @export
 magrittr::`%>%`

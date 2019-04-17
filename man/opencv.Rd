@@ -5,6 +5,9 @@
 \alias{ocv_facemask}
 \alias{ocv_read}
 \alias{ocv_write}
+\alias{ocv_thresh}
+\alias{ocv_disttransform}
+\alias{ocv_gray2bw}
 \alias{ocv_destroy}
 \alias{ocv_bitmap}
 \alias{ocv_edges}
@@ -31,6 +34,12 @@ ocv_facemask(image)
 ocv_read(path)
 
 ocv_write(image, path)
+
+ocv_thresh(image)
+
+ocv_disttransform(image)
+
+ocv_gray2bw(image)
 
 ocv_destroy(image)
 
