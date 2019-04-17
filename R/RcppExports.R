@@ -125,7 +125,15 @@ cvmat_imthresh <- function(ptr, thresh, maxval, thresholdType) {
     .Call('_opencv_cvmat_imthresh', PACKAGE = 'opencv', ptr, thresh, maxval, thresholdType)
 }
 
+cvmat_orbcreate <- function(nfeatures = 500L, scaleFactor = 1.2, nlevels = 8L, edgeThreshold = 31L, firstLevel = 0L, WTA_K = 2L) {
+    .Call('_opencv_cvmat_orbcreate', PACKAGE = 'opencv', nfeatures, scaleFactor, nlevels, edgeThreshold, firstLevel, WTA_K)
+}
+
 cvmat_markers <- function(ptr) {
     .Call('_opencv_cvmat_markers', PACKAGE = 'opencv', ptr)
+}
+
+alignImages <- function(im1, im2, features) {
+    .Call('_opencv_alignImages', PACKAGE = 'opencv', im1, im2, features)
 }
 

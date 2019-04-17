@@ -3,15 +3,16 @@ Type: Package
 Title: Bindings to 'OpenCV' Computer Vision Library
 Version: 0.1.9000
 Authors@R: c(person("Jeroen", "Ooms", role = c("aut", "cre"), 
-    email = "jeroen@berkeley.edu", comment = c(ORCID = "0000-0002-4035-0289")))
+    email = "jeroen@berkeley.edu", comment = c(ORCID = "0000-0002-4035-0289")),
+    person("Geoffrey", "Thompson", role = c('aut', 'ctb'), email = "gzthompson@gmail.com"))
 Description: Experimenting with computer vision and machine learning in R. This 
     package exposes some of the available 'OpenCV' <https://opencv.org/> algorithms,
     such as edge, body or face detection. These can either be applied to analyze 
     static images, or to filter live video footage from a camera device.
 License: MIT + file LICENSE
 SystemRequirements: OpenCV: libopencv-dev (Debian, Ubuntu) or opencv-devel (Fedora)
-URL: https://opencv.org (upstream) https://github.com/ropensci/opencv (devel)
-BugReports: https://github.com/ropensci/opencv/issues
+URL: https://opencv.org (upstream) https://github.com/uncoast-unconf/opencv (devel)
+BugReports: https://github.com/uncoast-unconf/opencv/issues
 LinkingTo: Rcpp
 Imports: Rcpp, magrittr
 LazyData: true
@@ -20,3 +21,6 @@ RoxygenNote: 6.1.1
 Roxygen: list(markdown = TRUE)
 Suggests: 
     testthat
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

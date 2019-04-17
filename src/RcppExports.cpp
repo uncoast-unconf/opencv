@@ -374,6 +374,20 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
     Rcpp::traits::input_parameter< NumericVector >::type y(ySEXP);
     rcpp_result_gen = Rcpp::wrap(timesXY(x, y));
+
+// cvmat_orbcreate
+XPtrOrb cvmat_orbcreate(int nfeatures, float scaleFactor, int nlevels, int edgeThreshold, int firstLevel, int WTA_K);
+RcppExport SEXP _opencv_cvmat_orbcreate(SEXP nfeaturesSEXP, SEXP scaleFactorSEXP, SEXP nlevelsSEXP, SEXP edgeThresholdSEXP, SEXP firstLevelSEXP, SEXP WTA_KSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type nfeatures(nfeaturesSEXP);
+    Rcpp::traits::input_parameter< float >::type scaleFactor(scaleFactorSEXP);
+    Rcpp::traits::input_parameter< int >::type nlevels(nlevelsSEXP);
+    Rcpp::traits::input_parameter< int >::type edgeThreshold(edgeThresholdSEXP);
+    Rcpp::traits::input_parameter< int >::type firstLevel(firstLevelSEXP);
+    Rcpp::traits::input_parameter< int >::type WTA_K(WTA_KSEXP);
+    rcpp_result_gen = Rcpp::wrap(cvmat_orbcreate(nfeatures, scaleFactor, nlevels, edgeThreshold, firstLevel, WTA_K));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -385,6 +399,19 @@ BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< XPtrMat >::type ptr(ptrSEXP);
     rcpp_result_gen = Rcpp::wrap(cvmat_markers(ptr));
+    return rcpp_result_gen;
+END_RCPP
+}
+// alignImages
+XPtrMat alignImages(XPtrMat im1, XPtrMat im2, int features);
+RcppExport SEXP _opencv_alignImages(SEXP im1SEXP, SEXP im2SEXP, SEXP featuresSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< XPtrMat >::type im1(im1SEXP);
+    Rcpp::traits::input_parameter< XPtrMat >::type im2(im2SEXP);
+    Rcpp::traits::input_parameter< int >::type features(featuresSEXP);
+    rcpp_result_gen = Rcpp::wrap(alignImages(im1, im2, features));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -423,7 +450,9 @@ static const R_CallMethodDef CallEntries[] = {
     {"_opencv_cvmat_cvtColor", (DL_FUNC) &_opencv_cvmat_cvtColor, 1},
     {"_opencv_cvmat_distanceTransform", (DL_FUNC) &_opencv_cvmat_distanceTransform, 1},
     {"_opencv_timesXY", (DL_FUNC) &_opencv_timesXY, 2},
+    {"_opencv_cvmat_orbcreate", (DL_FUNC) &_opencv_cvmat_orbcreate, 6},
     {"_opencv_cvmat_markers", (DL_FUNC) &_opencv_cvmat_markers, 1},
+    {"_opencv_alignImages", (DL_FUNC) &_opencv_alignImages, 3},
     {NULL, NULL, 0}
 };
 

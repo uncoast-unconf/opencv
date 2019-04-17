@@ -1,50 +1,136 @@
-# Bindings to 'OpenCV' Computer Vision Library
 
-> Experimenting with computer vision and machine learning in R. This 
-  package exposes some of the available 'OpenCV' <https://opencv.org/> algorithms,
-  such as edge, body or face detection. These can either be applied to analyze 
-  static images, or to filter live video footage from a camera device.
+<!-- README.md is generated from README.Rmd. Please edit that file -->
 
-[![Build Status](https://travis-ci.org/ropensci/opencv.svg?branch=master)](https://travis-ci.org/ropensci/opencv)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ropensci/opencv?branch=master&svg=true)](https://ci.appveyor.com/project/jeroen/opencv)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/opencv)](http://cran.r-project.org/package=opencv)
-[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/opencv)](http://cran.r-project.org/web/packages/opencv/index.html)
+# opencv
 
+<!-- badges: start -->
+
+<!-- badges: end -->
+
+# Bindings to ‘OpenCV’ Computer Vision Library
+
+> Experimenting with computer vision and machine learning in R. This
+> package exposes some of the available ‘OpenCV’ <https://opencv.org/>
+> algorithms, such as edge, body or face detection. These can either be
+> applied to analyze static images, or to filter live video footage from
+> a camera device. This is a modification of the existing `opencv` R
+> package on CRAN.
 
 ## Installation
 
-On Windows and MacOS, the package can be installed directoy from CRAN:
+This is a modification of the `opencv` R package on CRAN. On Windows and
+MacOS, the package can be installed directoy from CRAN:
 
-```r
+``` r
 install.packages("opencv")
+```
+
+This version can be found on github using:
+
+``` r
+devtools::install_github('uncoast-unconf/opencv')
 ```
 
 ### Install from source
 
-To install from source on MacOS, you need to install the opencv library from homebrew:
+To install from source on MacOS, you need to install the opencv library
+from homebrew:
 
-```sh
+``` sh
 brew install opencv
 ```
 
-On Ubuntu or Fedora you need [`libopencv-dev`](https://packages.debian.org/testing/libopencv-dev) or [`opencv-devel`](https://apps.fedoraproject.org/packages/opencv-devel/):
+On Ubuntu or Fedora you need
+[`libopencv-dev`](https://packages.debian.org/testing/libopencv-dev) or
+[`opencv-devel`](https://apps.fedoraproject.org/packages/opencv-devel/):
 
-```sh
+``` sh
 sudo apt-get install libopencv-dev
 ```
 
 And then install the R bindings:
 
-```r
-devtools::install_github("ropensci/opencv")
+``` r
+devtools::install_github("uncoast-unconf/opencv")
 library(opencv)
 ```
 
 ## Basic stuff:
 
+# Distance Transform
+
+A distance transform computes the distance of each pixel from the
+nearest 0 in a binary image. Here we have implemented an R wrapper for
+the OpenCV distance transform function.
+
+Here is a picture of all of use from yesterday:
+
+![All of us](uncoastunconf-group.jpeg)
+
+Here is a picture of all of us that has been binarized and then has the
+distance transform applied:
+
+``` r
+library(opencv)
+
+ocv_write(ocv_output_dist(ocv_read('uncoastunconf-group.jpeg')),'bin.jpg')
+#> [1] "/home/gzt/Documents/opencv/bin.jpg"
+```
+
+![binarized](bin.jpg)
+
+# ORB: Oriented FAST and Rotated BRIEF
+
+[ORB](https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_feature2d/py_orb/py_orb.html)
+is an algorithm that finds keypoints in a grayscale image and determines
+an orientation, These keypoints and orientation can then be matched with
+another image and the image can be transformed to be similar to the
+other image. Here we have made a wrapper for the ORB function in the
+OpenCV library and a function which demonstrates its use.
+
+This function uses ORB to transform the first image into the second.
+Here we have an image and the rotated version of it. We transform the
+rotated version back to the original version.
+
+![original](square.jpg) ![rotated](rotsquare.jpg)
+
+``` r
+library(opencv)
+
+stuff <- orb_read_and_register('rotsquare.jpg', 'square.jpg', 500)
+ocv_write(stuff, "corrected.jpg")
+#> [1] "/home/gzt/Documents/opencv/corrected.jpg"
+```
+
+![This should be the original image](corrected.jpg)
+
+Way cool.
+
+Unfortunately, this isn’t perfect - adding a little blur makes things go
+a little wonky. Caveat emptor\!
+
+Here’s the blurred image:
+
+![Blurred](rotblur.jpg)
+
+And here’s the attempt at registering the crisp image to the blurred
+one.
+
+``` r
+library(opencv)
+
+stuff <- orb_read_and_register('rotsquare.jpg', 'rotblur.jpg', 500)
+ocv_write(stuff, 'oops.jpg')
+#> [1] "/home/gzt/Documents/opencv/oops.jpg"
+```
+
+![oops](oops.jpg)
+
+### Old stuff:
+
 Face recognition:
 
-```r
+``` r
 unconf <- ocv_read('https://jeroen.github.io/images/unconf18.jpg')
 faces <- ocv_face(unconf)
 ocv_write(faces, 'faces.jpg')
@@ -52,7 +138,7 @@ ocv_write(faces, 'faces.jpg')
 
 Or get the face location data:
 
-```r
+``` r
 facemask <- ocv_facemask(unconf)
 attr(facemask, 'faces')
 ```
@@ -61,14 +147,14 @@ attr(facemask, 'faces')
 
 Live face detection:
 
-```r
+``` r
 library(opencv)
 ocv_video(ocv_face)
 ```
 
 Edge detection:
 
-```r
+``` r
 library(opencv)
 ocv_video(ocv_edges)
 ```
@@ -77,7 +163,7 @@ ocv_video(ocv_edges)
 
 Replaces the background with a plot:
 
-```r
+``` r
 library(opencv)
 library(ggplot2)
 
@@ -101,7 +187,7 @@ ocv_video(function(input){
 
 Put your face in the plot:
 
-```r
+``` r
 # Overlay face filter
 ocv_video(function(input){
   mask <- ocv_facemask(input)
@@ -111,9 +197,9 @@ ocv_video(function(input){
 
 ## Live Face Survey
 
-Go stand on the left if you're a tidier
+Go stand on the left if you’re a tidier
 
-```r
+``` r
 library(opencv)
 
 # get webcam size
